@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Your Business Name</title>
+  <meta name="description" content="Contact us about communal area cleaning in Jarrow and South Tyneside.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">Your Business <span>Name</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quote.html">Get a quote</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Contact us</h1>
+    <p class="lead">Ask a question or request a site visit and we'll get back to you.</p>
+
+    <div class="layout">
+      <!-- FORM SERVICE HOOK: data-netlify enables Netlify Forms when hosted on Netlify.
+           Choose how the form sends in js/contact.js (CONTACT_CONFIG.mode). -->
+      <form id="contact-form" class="card" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="enquiry">
+        <p class="hidden-field"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <p class="notice" id="quote-banner" hidden>We've added your quote details to the message below.</p>
+
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="err-name">
+          <span class="error" id="err-name" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="err-email">
+          <span class="error" id="err-email" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone number <span class="hint" style="display:inline">(optional)</span></label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel">
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required aria-describedby="err-message"></textarea>
+          <span class="error" id="err-message" role="alert"></span>
+        </div>
+
+        <button type="submit" class="btn btn-block" disabled>Send enquiry</button>
+        <p class="status" id="form-status" role="status"></p>
+      </form>
+
+      <aside class="card">
+        <h2>Get in touch</h2>
+        <ul class="contact-list">
+          <li><strong>Phone</strong> 0191 000 0000</li>
+          <li><strong>Email</strong> <a href="mailto:hello@example.com">hello@example.com</a></li>
+          <li><strong>Area covered</strong> Jarrow, Hebburn, South Shields and the wider Tyneside area</li>
+          <li><strong>Hours</strong> Monday to Friday, 8am – 5pm</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; Your Business Name · Communal area cleaning in Jarrow, South Tyneside</p>
+    </div>
+  </footer>
+
+  <script src="js/contact.js"></script>
+</body>
+</html>
