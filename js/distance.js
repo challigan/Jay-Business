@@ -31,7 +31,7 @@ var Distance = (function () {
   }
 
   /*
-   * Resolves to { ok: true, miles, postcode } or
+   * Resolves to { ok: true, miles, postcode, district, ward } or
    * { ok: false, reason: "invalid" | "not_found" | "network" }.
    * Never rejects, so callers can always fall back to a quote without travel.
    */
@@ -53,7 +53,9 @@ var Distance = (function () {
           return {
             ok: true,
             postcode: r.postcode,
-            miles: haversineMiles(base.latitude, base.longitude, r.latitude, r.longitude)
+            miles: haversineMiles(base.latitude, base.longitude, r.latitude, r.longitude),
+            district: r.admin_district || null,
+            ward: r.admin_ward || null
           };
         });
       })

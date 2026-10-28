@@ -14,6 +14,20 @@ var tests = {
     assert.strictEqual(calc.formatGBP(q.total), "£119.70");
     assert.strictEqual(q.monthly, Math.round(11970 * 52 / 12));
   },
+  "worked example in pence: total === 11970, monthly £518.70": function () {
+    var q = calc.calculateQuote({ hardFloors: 6, carpetFloors: 0, lifts: 1, flats: 20, frequency: "weekly", distanceMiles: 8 }, PRICING);
+    assert.strictEqual(q.total, 11970);
+    assert.strictEqual(q.discount, 1330);
+    assert.strictEqual(calc.formatGBP(q.monthly), "£518.70");
+  },
+  "typical-block examples on the home page": function () {
+    function t(i) { i.distanceMiles = 0; return calc.calculateQuote(i, PRICING); }
+    assert.strictEqual(calc.formatGBP(t({ hardFloors: 3, carpetFloors: 0, lifts: 0, flats: 6, frequency: "weekly" }).total), "£61.20");
+    var two = t({ hardFloors: 4, carpetFloors: 0, lifts: 1, flats: 12, frequency: "fortnightly" });
+    assert.strictEqual(calc.formatGBP(two.total), "£91.20");
+    assert.strictEqual(calc.formatGBP(two.monthly), "£197.60");
+    assert.strictEqual(calc.formatGBP(t({ hardFloors: 0, carpetFloors: 1, lifts: 0, flats: 2, frequency: "monthly" }).total), "£33.00");
+  },
   "within 5 miles adds no travel charge": function () {
     var q = calc.calculateQuote({ hardFloors: 1, carpetFloors: 0, lifts: 0, flats: 1, frequency: "monthly", distanceMiles: 4.9 }, PRICING);
     var travel = q.lines.filter(function (l) { return l.label === "Travel"; })[0];
